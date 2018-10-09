@@ -10,7 +10,8 @@
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.5.2",
     "react-leaflet": "^2.1.0",
-    "react-scripts": "2.0.4"
+    "react-scripts": "2.0.4",
+    "react-select": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

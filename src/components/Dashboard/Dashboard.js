@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import states from './states';
+import Select from 'react-select';
 
 class Dashboard extends Component {
   listOfStates = states;
 
-  onSelectMultipleStates = e => {
-    const options = e.target.options;
-    const values = [];
+  state = {
+    selectedOption: { label: 'Michigan', value: '26' }
+  };
 
-    for (let i = 0, l = options.length; i < l; i++) {
-      if (options[i].selected) {
-        values.push({ id: options[i].value, name: options[i].text });
-      }
-    }
-
-    console.log(values);
+  handleChange = selectedOption => {
+    this.setState({ selectedOption });
+    // console.log(`Option selected:`, selectedOption);
   };
 
   render() {
@@ -29,16 +26,13 @@ class Dashboard extends Component {
           <input type="text" name="IndvMembers" />
         </label>
         {/* //Default Drop Down Values */}
-        <label>
-          State
-          <select size="5" onChange={this.onSelectMultipleStates} multiple={true}>
-            {this.listOfStates.map(state => (
-              <option key={state.stateId} value={state.stateId}>
-                {state.stateName}
-              </option>
-            ))}
-          </select>
-        </label>
+        <label>State</label>
+        <Select
+          value={this.state.selectedOption}
+          onChange={this.handleChange}
+          options={this.listOfStates}
+          isSearchable={false}
+        />
         <label>
           Medicare Members
           <input type="text" name="MedicareMembers" />

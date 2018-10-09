@@ -1,211 +1,211 @@
 const states = [
   {
-    stateName: 'Alabama',
-    stateId: '01'
+    label: 'Alabama',
+    value: '01'
   },
   {
-    stateName: 'Alaska',
-    stateId: '02'
+    label: 'Alaska',
+    value: '02'
   },
   {
-    stateName: 'Arizona',
-    stateId: '04'
+    label: 'Arizona',
+    value: '04'
   },
   {
-    stateName: 'Arkansas',
-    stateId: '05'
+    label: 'Arkansas',
+    value: '05'
   },
   {
-    stateName: 'California',
-    stateId: '06'
+    label: 'California',
+    value: '06'
   },
   {
-    stateName: 'Colorado',
-    stateId: '08'
+    label: 'Colorado',
+    value: '08'
   },
   {
-    stateName: 'Connecticut',
-    stateId: '09'
+    label: 'Connecticut',
+    value: '09'
   },
   {
-    stateName: 'Delaware',
-    stateId: '10'
+    label: 'Delaware',
+    value: '10'
   },
   {
-    stateName: 'District of Columbia',
-    stateId: '11'
+    label: 'District of Columbia',
+    value: '11'
   },
   {
-    stateName: 'Florida',
-    stateId: '12'
+    label: 'Florida',
+    value: '12'
   },
   {
-    stateName: 'Georgia',
-    stateId: '13'
+    label: 'Georgia',
+    value: '13'
   },
   {
-    stateName: 'Hawaii',
-    stateId: '15'
+    label: 'Hawaii',
+    value: '15'
   },
   {
-    stateName: 'Idaho',
-    stateId: '16'
+    label: 'Idaho',
+    value: '16'
   },
   {
-    stateName: 'Illinois',
-    stateId: '17'
+    label: 'Illinois',
+    value: '17'
   },
   {
-    stateName: 'Indiana',
-    stateId: '18'
+    label: 'Indiana',
+    value: '18'
   },
   {
-    stateName: 'Iowa',
-    stateId: '19'
+    label: 'Iowa',
+    value: '19'
   },
   {
-    stateName: 'Kansas',
-    stateId: '20'
+    label: 'Kansas',
+    value: '20'
   },
   {
-    stateName: 'Kentucky',
-    stateId: '21'
+    label: 'Kentucky',
+    value: '21'
   },
   {
-    stateName: 'Louisiana',
-    stateId: '22'
+    label: 'Louisiana',
+    value: '22'
   },
   {
-    stateName: 'Maine',
-    stateId: '23'
+    label: 'Maine',
+    value: '23'
   },
   {
-    stateName: 'Maryland',
-    stateId: '24'
+    label: 'Maryland',
+    value: '24'
   },
   {
-    stateName: 'Massachusetts',
-    stateId: '25'
+    label: 'Massachusetts',
+    value: '25'
   },
   {
-    stateName: 'Michigan',
-    stateId: '26'
+    label: 'Michigan',
+    value: '26'
   },
   {
-    stateName: 'Minnesota',
-    stateId: '27'
+    label: 'Minnesota',
+    value: '27'
   },
   {
-    stateName: 'Mississippi',
-    stateId: '28'
+    label: 'Mississippi',
+    value: '28'
   },
   {
-    stateName: 'Missouri',
-    stateId: '29'
+    label: 'Missouri',
+    value: '29'
   },
   {
-    stateName: 'Montana',
-    stateId: '30'
+    label: 'Montana',
+    value: '30'
   },
   {
-    stateName: 'Nebraska',
-    stateId: '31'
+    label: 'Nebraska',
+    value: '31'
   },
   {
-    stateName: 'Nevada',
-    stateId: '32'
+    label: 'Nevada',
+    value: '32'
   },
   {
-    stateName: 'New Hampshire',
-    stateId: '33'
+    label: 'New Hampshire',
+    value: '33'
   },
   {
-    stateName: 'New Jersey',
-    stateId: '34'
+    label: 'New Jersey',
+    value: '34'
   },
   {
-    stateName: 'New Mexico',
-    stateId: '35'
+    label: 'New Mexico',
+    value: '35'
   },
   {
-    stateName: 'New York',
-    stateId: '36'
+    label: 'New York',
+    value: '36'
   },
   {
-    stateName: 'North Carolina',
-    stateId: '37'
+    label: 'North Carolina',
+    value: '37'
   },
   {
-    stateName: 'North Dakota',
-    stateId: '38'
+    label: 'North Dakota',
+    value: '38'
   },
   {
-    stateName: 'Ohio',
-    stateId: '39'
+    label: 'Ohio',
+    value: '39'
   },
   {
-    stateName: 'Oklahoma',
-    stateId: '40'
+    label: 'Oklahoma',
+    value: '40'
   },
   {
-    stateName: 'Oregon',
-    stateId: '41'
+    label: 'Oregon',
+    value: '41'
   },
   {
-    stateName: 'Pennsylvania',
-    stateId: '42'
+    label: 'Pennsylvania',
+    value: '42'
   },
   {
-    stateName: 'Rhode Island',
-    stateId: '44'
+    label: 'Rhode Island',
+    value: '44'
   },
   {
-    stateName: 'South Carolina',
-    stateId: '45'
+    label: 'South Carolina',
+    value: '45'
   },
   {
-    stateName: 'South Dakota',
-    stateId: '46'
+    label: 'South Dakota',
+    value: '46'
   },
   {
-    stateName: 'Tennessee',
-    stateId: '47'
+    label: 'Tennessee',
+    value: '47'
   },
   {
-    stateName: 'Texas',
-    stateId: '48'
+    label: 'Texas',
+    value: '48'
   },
   {
-    stateName: 'Utah',
-    stateId: '49'
+    label: 'Utah',
+    value: '49'
   },
   {
-    stateName: 'Vermont',
-    stateId: '50'
+    label: 'Vermont',
+    value: '50'
   },
   {
-    stateName: 'Virginia',
-    stateId: '51'
+    label: 'Virginia',
+    value: '51'
   },
   {
-    stateName: 'Washington',
-    stateId: '53'
+    label: 'Washington',
+    value: '53'
   },
   {
-    stateName: 'West Virginia',
-    stateId: '54'
+    label: 'West Virginia',
+    value: '54'
   },
   {
-    stateName: 'Wisconsin',
-    stateId: '55'
+    label: 'Wisconsin',
+    value: '55'
   },
   {
-    stateName: 'Wyoming',
-    stateId: '56'
+    label: 'Wyoming',
+    value: '56'
   },
   {
-    stateName: 'Puerto Rico',
-    stateId: '72'
+    label: 'Puerto Rico',
+    value: '72'
   }
 ];
 
