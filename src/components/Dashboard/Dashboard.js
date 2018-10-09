@@ -14,6 +14,7 @@ class Dashboard extends Component {
     <input type="text" name="IndvMembers"/>
     </label>
 
+      //Default Drop Down Values
     <label>State
     <select>
     <option value="all">All</option>
