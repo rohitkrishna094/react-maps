@@ -16,7 +16,6 @@ var barOptions_stacked = {
           beginAtZero: true,
           fontFamily: "'Open Sans Bold', sans-serif",
           fontSize: 12
-
         },
         scaleLabel: {
           display: false
@@ -31,20 +30,19 @@ var barOptions_stacked = {
           display: false,
           color: '#fff',
           zeroLineColor: '#fff',
-          zeroLineWidth: 0,
-
+          zeroLineWidth: 0
         },
         ticks: {
           fontFamily: "'Open Sans Bold', sans-serif",
-          fontSize: 12,
-        //  minRotation: 30
+          fontSize: 12
+          //  minRotation: 30
         },
         stacked: true
       }
     ]
   },
   legend: {
-    display: true,
+    display: true
     //position: 'right'
   },
   animation: {
