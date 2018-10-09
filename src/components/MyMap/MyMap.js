@@ -32,7 +32,7 @@ class MyMap extends Component {
   // reset default style on mouseOut
   resetHighlight = (component, e) => {
     // Just to show the ref is there during the event, i'm not sure how to specifically use it with your library
-    console.log(component.refs.geojson);
+    // console.log(component.refnpms.geojson);
     this.refs.geojson.leafletElement.resetStyle(e.target);
     // how to encapsulate GeoJson component/object?
   };
@@ -48,7 +48,7 @@ class MyMap extends Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <Map className="map" center={position} zoom={this.state.zoom}>
+      <Map style={this.props.style} center={position} zoom={this.state.zoom}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url={this.tileUrl}
