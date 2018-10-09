@@ -54,14 +54,6 @@ class MyMap extends Component {
   };
 
   render() {
-    // const temp = [];
-    // this.usaStatesBorders.features.forEach(s => {
-    //   const stateName = s.properties.name;
-    //   const stateId = s.id;
-    //   temp.push({ stateName, stateId });
-    // });
-    // console.log(temp);
-
     const position = [this.state.lat, this.state.lng];
     return (
       <Map style={this.props.style} center={position} zoom={this.state.zoom}>
