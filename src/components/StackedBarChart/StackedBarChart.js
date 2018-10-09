@@ -16,6 +16,7 @@ var barOptions_stacked = {
           beginAtZero: true,
           fontFamily: "'Open Sans Bold', sans-serif",
           fontSize: 12
+
         },
         scaleLabel: {
           display: false
@@ -30,18 +31,21 @@ var barOptions_stacked = {
           display: false,
           color: '#fff',
           zeroLineColor: '#fff',
-          zeroLineWidth: 0
+          zeroLineWidth: 0,
+
         },
         ticks: {
           fontFamily: "'Open Sans Bold', sans-serif",
-          fontSize: 12
+          fontSize: 12,
+        //  minRotation: 30
         },
         stacked: true
       }
     ]
   },
   legend: {
-    display: true
+    display: true,
+    //position: 'right'
   },
   animation: {
     onComplete: function() {
@@ -75,13 +79,13 @@ var barOptions_stacked = {
 };
 
 let data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
   datasets: [
     {
       label: 'My First dataset',
       backgroundColor: 'rgba(255,99,132,0.2)',
       borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1,
+      borderWidth: 2,
       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
       hoverBorderColor: 'rgba(255,99,132,1)',
       data: [65, 59, 80, 81, 56, 55, 40]
@@ -90,7 +94,7 @@ let data = {
       label: 'My Second dataset',
       backgroundColor: 'rgba(255,99,132,0.2)',
       borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1,
+      borderWidth: 2,
       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
       hoverBorderColor: 'rgba(255,99,132,1)',
       data: [75, 69, 90, 71, 46, 35, 20]
@@ -99,7 +103,7 @@ let data = {
       label: 'My Second dataset',
       backgroundColor: 'rgba(255,99,132,0.2)',
       borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1,
+      borderWidth: 2,
       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
       hoverBorderColor: 'rgba(255,99,132,1)',
       data: [45, 39, 40, 51, 76, 25, 10]
