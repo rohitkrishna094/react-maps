@@ -18,7 +18,7 @@ class MyMap extends Component {
     var layer = e.target;
 
     layer.setStyle({
-      weight: 5,
+      weight: 1,
       color: '#666',
       dashArray: '',
       fillOpacity: 0.7
@@ -45,6 +45,14 @@ class MyMap extends Component {
     });
   };
 
+  geoJsonStyle = feature => {
+    return {
+      stroke: false,
+      weight: 1,
+      fillOpacity: 0.0
+    };
+  };
+
   render() {
     // const temp = [];
     // this.usaStatesBorders.features.forEach(s => {
@@ -67,7 +75,12 @@ class MyMap extends Component {
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
-        <GeoJSON data={this.usaStatesBorders} onEachFeature={this.onEachFeature.bind(null, this)} ref="geojson" />
+        <GeoJSON
+          data={this.usaStatesBorders}
+          onEachFeature={this.onEachFeature.bind(null, this)}
+          ref="geojson"
+          style={this.geoJsonStyle}
+        />
       </Map>
     );
   }
