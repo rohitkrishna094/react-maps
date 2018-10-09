@@ -7,15 +7,15 @@ import MyMap from './components/MyMap/MyMap';
 
 class App extends Component {
   chartStyle = {
-    width: '500px',
-    height: '800px',
+    width: '800px',
+    height: '1500px',
     float: 'left'
     // display: 'none'
   };
 
   mapStyle = {
     // margin: '100px auto',
-    width: '500px',
+    width: '700px',
     height: '400px'
   };
 
@@ -33,7 +33,7 @@ class App extends Component {
         <Header />
         <Dashboard />
         <div>
-          <StackedBarChart />
+          <StackedBarChart style={this.chartStyle}/>
           <MyMap style={this.mapStyle} />
         </div>
       </div>
