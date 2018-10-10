@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import states from './states';
 import Select from 'react-select';
-import App from '../../App.css'
+import App from '../../App.css';
 
 class Dashboard extends Component {
   listOfStates = states;
 
   state = {
-    selectedOption: { label: 'Michigan', value: '26' }
+    selectedOption: { label: 'Michigan', value: '26' },
+    values: []
   };
 
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
+  handleChange = values => {
+    // this.setState({ selectedOption });
     // console.log(`Option selected:`, selectedOption);
+    if (values.length < 4) {
+      this.setState({ values });
+    }
   };
 
   render() {
@@ -28,13 +32,13 @@ class Dashboard extends Component {
         </label>
         {/* //Default Drop Down Values */}
         <label>State</label>
-        <Select 
+        <Select
           className="design"
-          value={this.state.selectedOption}
-          onChange={this.handleChange}
+          value={this.state.values}
           options={this.listOfStates}
           isSearchable={true}
           isMulti={true}
+          onChange={values => this.handleChange(values)}
         />
         <label>
           Medicare Members
