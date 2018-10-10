@@ -33,7 +33,8 @@ class Dashboard extends Component {
           value={this.state.selectedOption}
           onChange={this.handleChange}
           options={this.listOfStates}
-          isSearchable={false}
+          isSearchable={true}
+          isMulti={true}
         />
         <label>
           Medicare Members
