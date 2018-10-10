@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import states from './states';
 import Select from 'react-select';
+import App from '../../App.css'
 
 class Dashboard extends Component {
   listOfStates = states;
@@ -27,7 +28,8 @@ class Dashboard extends Component {
         </label>
         {/* //Default Drop Down Values */}
         <label>State</label>
-        <Select
+        <Select 
+          className="design"
           value={this.state.selectedOption}
           onChange={this.handleChange}
           options={this.listOfStates}
