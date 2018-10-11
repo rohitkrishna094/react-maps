@@ -8,11 +8,21 @@ class MyMap extends Component {
   tileUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + this.mapboxAccessToken;
   usaStatesBorders = statesData;
 
-  state = {
-    lat: 37.8,
-    lng: -96,
-    zoom: 4
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: 37.8,
+      lng: -96,
+      zoom: 4,
+      selectedStates: props.selectedStates
+    };
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedStates !== this.state.selectedStates) {
+      this.setState({ selectedStates: nextProps.selectedStates });
+    }
+  }
 
   highlightFeature = e => {
     var layer = e.target;
@@ -63,16 +73,34 @@ class MyMap extends Component {
                   : '#FFEDA0';
   };
 
+  getFillOpacity = id => {
+    const { selectedStates } = this.state;
+    if (this._isPresent(id, selectedStates)) {
+      return 1.0;
+    }
+    return 0.0;
+  };
+
+  _isPresent = (id, selectedStates) => {
+    for (let i = 0; i < selectedStates.length; i++) {
+      if (id === selectedStates[i].value) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   geoJsonStyle = feature => {
-    console.log(feature);
+    // console.log(feature);
 
     return {
       stroke: true,
-      fillColor: this.getColor(feature.properties.density),
+      // fillColor: this.getColor(feature.properties.density),
+      fillColor: '#FC4E2A',
       weight: 1,
       color: 'white',
       // fillColor: '#C3E0F0',
-      fillOpacity: 0.7
+      fillOpacity: this.getFillOpacity(feature.id)
     };
   };
 
@@ -80,11 +108,11 @@ class MyMap extends Component {
     const position = [this.state.lat, this.state.lng];
     return (
       <div>
-        {this.props.selectedStates.map(s => (
+        {/* {this.state.selectedStates.map(s => (
           <p key={s.label}>
             {s.label} - {s.value}
           </p>
-        ))}
+        ))} */}
 
         <Map style={this.props.style} center={position} zoom={this.state.zoom}>
           <TileLayer
