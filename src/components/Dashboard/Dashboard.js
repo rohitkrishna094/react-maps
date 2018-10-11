@@ -19,12 +19,16 @@ class Dashboard extends Component {
     }
   };
 
+  getContent = e => {
+    this.props.callback(e.target.value);
+  };
+
   render() {
     return (
       <form>
         <label>
           Group Members
-          <input type="text" name="GrpMembers" />
+          <input type="text" name="GrpMembers" onChange={this.getContent} />
         </label>
         <label>
           Individual Members

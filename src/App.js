@@ -6,6 +6,8 @@ import StackedBarChart from './components/StackedBarChart/StackedBarChart';
 import MyMap from './components/MyMap/MyMap';
 
 class App extends Component {
+  state = { data: '' };
+
   chartStyle = {
     width: '800px',
     height: '1500px',
@@ -27,14 +29,20 @@ class App extends Component {
     border: '3px solid green'
   };
 
+  formChild1 = params => {
+    this.setState({
+      data: params
+    });
+  };
+
   render() {
     return (
       <div>
         <Header />
-        <Dashboard />
+        <Dashboard callback={this.formChild1} />
         <div>
-          <StackedBarChart style={this.chartStyle}/>
-          <MyMap style={this.mapStyle} />
+          <StackedBarChart style={this.chartStyle} />
+          <MyMap style={this.mapStyle} data={this.state.data} />
         </div>
       </div>
     );

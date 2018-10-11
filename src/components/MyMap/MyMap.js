@@ -56,24 +56,27 @@ class MyMap extends Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <Map style={this.props.style} center={position} zoom={this.state.zoom}>
-        <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url={this.tileUrl}
-          id="mapbox.light"
-        />
-        <Marker position={position}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-        <GeoJSON
-          data={this.usaStatesBorders}
-          onEachFeature={this.onEachFeature.bind(null, this)}
-          ref="geojson"
-          style={this.geoJsonStyle}
-        />
-      </Map>
+      <div>
+        <p>Data: {this.props.data}</p>
+        <Map style={this.props.style} center={position} zoom={this.state.zoom}>
+          <TileLayer
+            attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+            url={this.tileUrl}
+            id="mapbox.light"
+          />
+          <Marker position={position}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+          <GeoJSON
+            data={this.usaStatesBorders}
+            onEachFeature={this.onEachFeature.bind(null, this)}
+            ref="geojson"
+            style={this.geoJsonStyle}
+          />
+        </Map>
+      </div>
     );
   }
 }
