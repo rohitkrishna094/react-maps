@@ -45,11 +45,34 @@ class MyMap extends Component {
     });
   };
 
+  getColor = d => {
+    return d > 1000
+      ? '#800026'
+      : d > 500
+        ? '#BD0026'
+        : d > 200
+          ? '#E31A1C'
+          : d > 100
+            ? '#FC4E2A'
+            : d > 50
+              ? '#FD8D3C'
+              : d > 20
+                ? '#FEB24C'
+                : d > 10
+                  ? '#FED976'
+                  : '#FFEDA0';
+  };
+
   geoJsonStyle = feature => {
+    console.log(feature);
+
     return {
-      stroke: false,
+      stroke: true,
+      fillColor: this.getColor(feature.properties.density),
       weight: 1,
-      fillOpacity: 0.0
+      color: 'white',
+      // fillColor: '#C3E0F0',
+      fillOpacity: 0.7
     };
   };
 
@@ -57,6 +80,12 @@ class MyMap extends Component {
     const position = [this.state.lat, this.state.lng];
     return (
       <div>
+        {this.props.selectedStates.map(s => (
+          <p key={s.label}>
+            {s.label} - {s.value}
+          </p>
+        ))}
+
         <Map style={this.props.style} center={position} zoom={this.state.zoom}>
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"

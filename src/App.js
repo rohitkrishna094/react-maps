@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       input: {},
-      states: [],
+      selectedStates: [{ label: 'Michigan', value: '26' }],
       inputValues: {
         groupMembers: 400000,
         individualMembers: 300000,
@@ -49,14 +49,14 @@ class App extends Component {
     border: '3px solid green'
   };
 
-  formChild1 = (name, value) => {
+  handleCallback = (name, value) => {
     if (name === 'input') {
       this.setState({
         input: { ...this.state.input, ...value }
       });
     } else if (name === 'states') {
       this.setState({
-        states: [...value]
+        selectedStates: [...value]
       });
     }
   };
@@ -65,10 +65,10 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Dashboard callback={this.formChild1} inputValues={this.state.inputValues} />
+        <Dashboard callback={this.handleCallback} inputValues={this.state.inputValues} />
         <div>
           <StackedBarChart style={this.chartStyle} />
-          <MyMap style={this.mapStyle} />
+          <MyMap style={this.mapStyle} selectedStates={this.state.selectedStates} />
         </div>
       </div>
     );
