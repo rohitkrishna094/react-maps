@@ -6,7 +6,7 @@ import StackedBarChart from './components/StackedBarChart/StackedBarChart';
 import MyMap from './components/MyMap/MyMap';
 
 class App extends Component {
-  state = { input: {} };
+  state = { input: {}, states: [] };
 
   chartStyle = {
     width: '800px',
@@ -30,9 +30,18 @@ class App extends Component {
   };
 
   formChild1 = (name, value) => {
-    this.setState({
-      input: { ...this.state.input, [name]: value }
-    });
+    if (name === 'input') {
+      this.setState({
+        input: { ...this.state.input, ...value }
+      });
+    } else if (name === 'states') {
+      //
+      console.log('we are here' + JSON.stringify(value));
+
+      this.setState({
+        states: [...this.states, ...value]
+      });
+    }
   };
 
   render() {
@@ -42,7 +51,7 @@ class App extends Component {
         <Dashboard callback={this.formChild1} />
         <div>
           <StackedBarChart style={this.chartStyle} />
-          <MyMap style={this.mapStyle} data={this.state.data} />
+          <MyMap style={this.mapStyle} />
         </div>
       </div>
     );

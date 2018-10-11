@@ -16,11 +16,14 @@ class Dashboard extends Component {
     // console.log(`Option selected:`, selectedOption);
     if (values.length < 4) {
       this.setState({ values });
+      const statesArray = values;
+      this.props.callback('states', values);
     }
   };
 
   fillData = e => {
-    this.props.callback(e.target.name, e.target.value);
+    const input = { [e.target.name]: e.target.value };
+    this.props.callback('input', input);
   };
 
   render() {

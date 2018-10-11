@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import Chart from 'chart.js';
 
-var barOptions_stacked = {
+const barOptions_stacked = {
   tooltips: {
     enabled: true
   },
@@ -110,6 +110,11 @@ let data = {
 };
 
 class StackedBarChart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: { datasets: data.datasets, labels: data.labels } };
+  }
+
   getDatasetAtEventCustom = event => {
     console.log(' getDatasetAtEventCustom event - ' + event);
   };
@@ -129,8 +134,11 @@ class StackedBarChart extends Component {
   render() {
     return (
       <div style={this.props.style}>
+        {this.state.data.datasets.map(o => (
+          <p>{o.data + ' '}</p>
+        ))}
         <HorizontalBar
-          data={data}
+          data={this.state.data}
           options={barOptions_stacked}
           getDatasetAtEvent={this.getDatasetAtEventCustom}
           getElementAtEvent={this.getElementAtEventCustom}
