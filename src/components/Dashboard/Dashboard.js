@@ -19,8 +19,8 @@ class Dashboard extends Component {
     }
   };
 
-  getContent = e => {
-    this.props.callback(e.target.value);
+  fillData = e => {
+    this.props.callback(e.target.name, e.target.value);
   };
 
   render() {
@@ -28,11 +28,11 @@ class Dashboard extends Component {
       <form>
         <label>
           Group Members
-          <input type="text" name="GrpMembers" onChange={this.getContent} />
+          <input type="text" name="groupMembers" onChange={this.fillData} />
         </label>
         <label>
           Individual Members
-          <input type="text" name="IndvMembers" />
+          <input type="text" name="individualMembers" onChange={this.fillData} />
         </label>
         {/* //Default Drop Down Values */}
         <label>State</label>
@@ -46,11 +46,11 @@ class Dashboard extends Component {
         />
         <label>
           Medicare Members
-          <input type="text" name="MedicareMembers" />
+          <input type="text" name="medicareMembers" onChange={this.fillData} />
         </label>
         <label>
           Medicaid Members
-          <input type="text" name="MedicaidMembers" />
+          <input type="text" name="medicaidMembers" onChange={this.fillData} />
         </label>
         <label>
           Combination
