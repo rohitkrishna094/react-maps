@@ -134,9 +134,6 @@ class StackedBarChart extends Component {
   render() {
     return (
       <div style={this.props.style}>
-        {this.state.data.datasets.map(o => (
-          <p>{o.data + ' '}</p>
-        ))}
         <HorizontalBar
           data={this.state.data}
           options={barOptions_stacked}

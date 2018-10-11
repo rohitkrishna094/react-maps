@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
+import { Map, TileLayer, GeoJSON } from 'react-leaflet';
 import L from 'leaflet';
 import statesData from './us-states';
 
@@ -63,11 +63,6 @@ class MyMap extends Component {
             url={this.tileUrl}
             id="mapbox.light"
           />
-          <Marker position={position}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
           <GeoJSON
             data={this.usaStatesBorders}
             onEachFeature={this.onEachFeature.bind(null, this)}

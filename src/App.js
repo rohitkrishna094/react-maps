@@ -39,7 +39,7 @@ class App extends Component {
       console.log('we are here' + JSON.stringify(value));
 
       this.setState({
-        states: [...this.states, ...value]
+        states: [...value]
       });
     }
   };
