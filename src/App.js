@@ -4,9 +4,29 @@ import Header from './components/Header/Header';
 import Dashboard from './components/Dashboard/Dashboard';
 import StackedBarChart from './components/StackedBarChart/StackedBarChart';
 import MyMap from './components/MyMap/MyMap';
+import { getData, getDataDefault, getSomeRandomData } from './api/FetchService';
 
 class App extends Component {
-  state = { input: {}, states: [] };
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: {},
+      states: [],
+      inputValues: {
+        groupMembers: 400000,
+        individualMembers: 300000,
+        medicareMembers: 500000,
+        medicaidMembers: 200000
+      }
+    };
+
+    getSomeRandomData(
+      err => {},
+      data => {
+        console.log(data);
+      }
+    );
+  }
 
   chartStyle = {
     width: '800px',
@@ -35,9 +55,6 @@ class App extends Component {
         input: { ...this.state.input, ...value }
       });
     } else if (name === 'states') {
-      //
-      console.log('we are here' + JSON.stringify(value));
-
       this.setState({
         states: [...value]
       });
@@ -48,7 +65,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Dashboard callback={this.formChild1} />
+        <Dashboard callback={this.formChild1} inputValues={this.state.inputValues} />
         <div>
           <StackedBarChart style={this.chartStyle} />
           <MyMap style={this.mapStyle} />
