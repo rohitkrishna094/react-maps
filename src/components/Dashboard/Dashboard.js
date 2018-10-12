@@ -3,6 +3,8 @@ import states from './states';
 import Select from 'react-select';
 import App from '../../App.css';
 
+// const defaultSelectOption = { label: 'Michigan', value: 26 };
+
 class Dashboard extends Component {
   listOfStates = states;
 
@@ -22,7 +24,6 @@ class Dashboard extends Component {
   handleChange = values => {
     if (values.length < 4) {
       this.setState({ values });
-      const statesArray = values;
       this.props.callback('states', values);
     }
   };
@@ -68,6 +69,7 @@ class Dashboard extends Component {
           isSearchable={true}
           isMulti={true}
           onChange={values => this.handleChange(values) || ''}
+          isClearable={true}
         />
         <label>
           Medicare Members

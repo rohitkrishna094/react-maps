@@ -3,6 +3,9 @@ import { Map, TileLayer, GeoJSON } from 'react-leaflet';
 import L from 'leaflet';
 import statesData from './us-states';
 
+// light to dark
+const colors = ['#C3E0F0', '#699AC3', '#2C5985'];
+
 class MyMap extends Component {
   mapboxAccessToken = 'pk.eyJ1Ijoicm9oaXRtYXBzIiwiYSI6ImNqbXl6c3VrbjBiN2czd255czYzdjltZ2gifQ.VQZUgdusFb5E4QMhaw4XIA';
   tileUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + this.mapboxAccessToken;
@@ -90,13 +93,20 @@ class MyMap extends Component {
     return false;
   };
 
+  getColorShade = (d, id) => {
+    const { selectedStates } = this.state;
+    if (this._isPresent(id, selectedStates)) {
+      // get color shade here. think about the logic once again.
+    }
+  };
+
   geoJsonStyle = feature => {
     // console.log(feature);
 
     return {
       stroke: true,
       // fillColor: this.getColor(feature.properties.density),
-      fillColor: '#FC4E2A',
+      fillColor: this.getColorShade(feature.properties.density, feature.id),
       weight: 1,
       color: 'white',
       // fillColor: '#C3E0F0',
