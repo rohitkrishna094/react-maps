@@ -81,29 +81,29 @@ let data = {
   datasets: [
     {
       label: 'My First dataset',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: '#4169E1',
+      borderColor: '#4169E1',
       borderWidth: 2,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
+      hoverBackgroundColor: '#4169E1',
+      hoverBorderColor: '#4169E1',
       data: [65, 59, 80, 81, 56, 55, 40]
     },
     {
       label: 'My Second dataset',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: '#0000CD',
+      borderColor: '#0000CD',
       borderWidth: 2,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
+      hoverBackgroundColor: '#0000CD',
+      hoverBorderColor: '#0000CD',
       data: [75, 69, 90, 71, 46, 35, 20]
     },
     {
       label: 'My Second dataset',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: '#00008B',
+      borderColor: '#00008B',
       borderWidth: 2,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
+      hoverBackgroundColor: '#00008B',
+      hoverBorderColor: '#00008B',
       data: [45, 39, 40, 51, 76, 25, 10]
     }
   ]
@@ -133,7 +133,11 @@ class StackedBarChart extends Component {
 
   render() {
     return (
-      <div style={this.props.style}>
+
+      <div className="alignForm1" style={this.props.style}>
+      <header className="heading">
+      Data in the form of StackedBarChart:
+      </header>
         <HorizontalBar
           data={this.state.data}
           options={barOptions_stacked}

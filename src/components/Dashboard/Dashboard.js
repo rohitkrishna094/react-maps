@@ -42,28 +42,40 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <form>
-        <label>
+
+      <div className="container">
+
+      <div className="column1">
+        <label className="textColor">
           Group Members
           <input
             type="text"
             name="groupMembers"
+            className = "addUI"
             onChange={this.fillData}
             value={this.state.inputValues.groupMembers || ''}
           />
         </label>
-        <label>
+
+        </div>
+
+        <div className="column1">
+        <label className="textColor">
           Individual Members
           <input
             type="text"
             name="individualMembers"
+            className = "addUI"
             onChange={this.fillData}
             value={this.state.inputValues.individualMembers || ''}
           />
         </label>
-        <label>State</label>
+        </div>
+
+        <div className="column1">
+        <label className="textColor">State</label>
         <Select
-          className="design"
+          className = "design"
           value={this.state.values}
           options={this.listOfStates}
           isSearchable={true}
@@ -71,34 +83,49 @@ class Dashboard extends Component {
           onChange={values => this.handleChange(values) || ''}
           isClearable={true}
         />
-        <label>
+        </div>
+
+        <div className="column1">
+        <label className="textColor">
           Medicare Members
           <input
             type="text"
             name="medicareMembers"
+            className = "addUI"
             onChange={this.fillData}
             value={this.state.inputValues.medicareMembers || ''}
           />
         </label>
-        <label>
+        </div>
+
+        <div className="column1">
+        <label className="textColor">
           Medicaid Members
           <input
             type="text"
             name="medicaidMembers"
+            className = "addUI"
             onChange={this.fillData}
             value={this.state.inputValues.medicaidMembers}
           />
         </label>
-        <label>
+        </div>
+
+        <div className="column1">
+        <label className="textColor">
           Combination
-          <select>
+          <select className = "addUI">
             <option value="all">All</option>
             <option value="saab">Saab</option>
             <option value="mercedes">Mercedes</option>
             <option value="audi">Audi</option>
           </select>
         </label>
-      </form>
+        </div>
+
+      </div>
+
+
     );
   }
 }

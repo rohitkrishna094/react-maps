@@ -57,8 +57,10 @@ class App extends Component {
     } else if (name === 'states') {
       this.setState({
         selectedStates: [...value]
+
       });
     }
+    
   };
 
   render() {

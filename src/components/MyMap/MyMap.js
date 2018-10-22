@@ -17,7 +17,9 @@ class MyMap extends Component {
       lat: 37.8,
       lng: -96,
       zoom: 4,
-      selectedStates: props.selectedStates
+      selectedStates: props.selectedStates,
+      color: {}
+
     };
   }
 
@@ -87,42 +89,56 @@ class MyMap extends Component {
   _isPresent = (id, selectedStates) => {
     for (let i = 0; i < selectedStates.length; i++) {
       if (id === selectedStates[i].value) {
+        console.log(selectedStates[i].value);
         return true;
       }
     }
     return false;
   };
 
-  getColorShade = (d, id) => {
-    const { selectedStates } = this.state;
-    if (this._isPresent(id, selectedStates)) {
+  getColorShade = (selectedStates) => {
+    //const { selectedStates } = this.state;
+    if (selectedStates == 'California') {
       // get color shade here. think about the logic once again.
+        this.color = { color: 'blue'};
+        console.log(this.color);
     }
   };
 
   geoJsonStyle = feature => {
-    // console.log(feature);
+
 
     return {
+
       stroke: true,
       // fillColor: this.getColor(feature.properties.density),
-      fillColor: this.getColorShade(feature.properties.density, feature.id),
+    //  fillColor: this.getColorShade(feature.properties.density, feature.id),
+
       weight: 1,
-      color: 'white',
+
+      color: this.getColorShade,
+
       // fillColor: '#C3E0F0',
       fillOpacity: this.getFillOpacity(feature.id)
+
     };
   };
+
 
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <div>
+      <div className="alignForm1">
         {/* {this.state.selectedStates.map(s => (
           <p key={s.label}>
             {s.label} - {s.value}
           </p>
         ))} */}
+
+
+        <header className="heading">
+        Data in the form of Maps:
+        </header>
 
         <Map style={this.props.style} center={position} zoom={this.state.zoom}>
           <TileLayer
