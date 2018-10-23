@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import Chart from 'chart.js';
+import { postData } from '../../api/FetchService';
 
 const barOptions_stacked = {
   tooltips: {
@@ -132,7 +133,22 @@ class StackedBarChart extends Component {
   };
 
   componentDidUpdate() {
-    console.log(this.props.selectedStates);
+    let dataToSend = [];
+
+    this.props.selectedStates.forEach(s => {
+      let o = { ...this.props.inputValues, stateName: s.label, stateId: s.value };
+      dataToSend.push(o);
+    });
+
+    // console.log(dataToSend);
+
+    postData(
+      data,
+      err => {},
+      result => {
+        // console.log(result);
+      }
+    );
   }
 
   render() {

@@ -11,7 +11,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      values: [{ label: 'Michigan', value: '26' }],
+      values: [{ label: 'Michigan', value: 26 }],
       inputValues: {
         groupMembers: props.inputValues.groupMembers,
         individualMembers: props.inputValues.individualMembers,
@@ -24,12 +24,13 @@ class Dashboard extends Component {
   handleChange = values => {
     if (values.length < 4) {
       this.setState({ values });
+
       this.props.callback('states', values);
     }
   };
 
   fillData = e => {
-    const input = { [e.target.name]: e.target.value };
+    const input = { [e.target.name]: parseInt(e.target.value) };
     this.props.callback('input', input);
 
     this.setState({
@@ -42,90 +43,84 @@ class Dashboard extends Component {
 
   render() {
     return (
-
       <div className="container">
+        <div className="column1">
+          <label className="textColor">
+            Group Members
+            <input
+              type="text"
+              name="groupMembers"
+              className="addUI"
+              onChange={this.fillData}
+              value={this.state.inputValues.groupMembers || ''}
+            />
+          </label>
+        </div>
 
-      <div className="column1">
-        <label className="textColor">
-          Group Members
-          <input
-            type="text"
-            name="groupMembers"
-            className = "addUI"
-            onChange={this.fillData}
-            value={this.state.inputValues.groupMembers || ''}
+        <div className="column1">
+          <label className="textColor">
+            Individual Members
+            <input
+              type="text"
+              name="individualMembers"
+              className="addUI"
+              onChange={this.fillData}
+              value={this.state.inputValues.individualMembers || ''}
+            />
+          </label>
+        </div>
+
+        <div className="column1">
+          <label className="textColor">State</label>
+          <Select
+            className="design"
+            value={this.state.values}
+            options={this.listOfStates}
+            isSearchable={true}
+            isMulti={true}
+            onChange={values => this.handleChange(values) || ''}
+            isClearable={true}
           />
-        </label>
-
         </div>
 
         <div className="column1">
-        <label className="textColor">
-          Individual Members
-          <input
-            type="text"
-            name="individualMembers"
-            className = "addUI"
-            onChange={this.fillData}
-            value={this.state.inputValues.individualMembers || ''}
-          />
-        </label>
+          <label className="textColor">
+            Medicare Members
+            <input
+              type="text"
+              name="medicareMembers"
+              className="addUI"
+              onChange={this.fillData}
+              value={this.state.inputValues.medicareMembers || ''}
+            />
+          </label>
         </div>
 
         <div className="column1">
-        <label className="textColor">State</label>
-        <Select
-          className = "design"
-          value={this.state.values}
-          options={this.listOfStates}
-          isSearchable={true}
-          isMulti={true}
-          onChange={values => this.handleChange(values) || ''}
-          isClearable={true}
-        />
+          <label className="textColor">
+            Medicaid Members
+            <input
+              type="text"
+              name="medicaidMembers"
+              className="addUI"
+              onChange={this.fillData}
+              value={this.state.inputValues.medicaidMembers}
+            />
+          </label>
         </div>
 
         <div className="column1">
-        <label className="textColor">
-          Medicare Members
-          <input
-            type="text"
-            name="medicareMembers"
-            className = "addUI"
-            onChange={this.fillData}
-            value={this.state.inputValues.medicareMembers || ''}
-          />
-        </label>
+          <label className="textColor">
+            Combination
+            <select className="addUI">
+              <option value="all">All</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+          </label>
         </div>
-
-        <div className="column1">
-        <label className="textColor">
-          Medicaid Members
-          <input
-            type="text"
-            name="medicaidMembers"
-            className = "addUI"
-            onChange={this.fillData}
-            value={this.state.inputValues.medicaidMembers}
-          />
-        </label>
-        </div>
-
-        <div className="column1">
-        <label className="textColor">
-          Combination
-          <select className = "addUI">
-            <option value="all">All</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
-        </label>
-        </div>
-
       </div>
-
-
     );
   }
 }

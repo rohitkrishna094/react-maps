@@ -6,18 +6,20 @@ import StackedBarChart from './components/StackedBarChart/StackedBarChart';
 import MyMap from './components/MyMap/MyMap';
 import { getData, getDataDefault, getSomeRandomData, postData } from './api/FetchService';
 
+const defaultValues = {
+  groupMembers: 400000,
+  individualMembers: 300000,
+  medicareMembers: 500000,
+  medicaidMembers: 200000
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: {},
-      selectedStates: [{ label: 'Michigan', value: '26' }],
-      inputValues: {
-        groupMembers: 400000,
-        individualMembers: 300000,
-        medicareMembers: 500000,
-        medicaidMembers: 200000
-      }
+      input: { ...defaultValues },
+      selectedStates: [{ label: 'Michigan', value: 26 }],
+      inputValues: { ...defaultValues }
     };
 
     postData(
@@ -70,10 +72,16 @@ class App extends Component {
             {s.label} - {s.value}
           </p>
         ))} */}
+        {/* <p>{this.state.input}</p> */}
+
         <Header />
         <Dashboard callback={this.handleCallback} inputValues={this.state.inputValues} />
         <div>
-          <StackedBarChart style={this.chartStyle} selectedStates={this.state.selectedStates} />
+          <StackedBarChart
+            style={this.chartStyle}
+            selectedStates={this.state.selectedStates}
+            inputValues={this.state.input}
+          />
           <MyMap style={this.mapStyle} selectedStates={this.state.selectedStates} />
         </div>
       </div>
