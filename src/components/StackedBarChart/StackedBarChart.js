@@ -7,9 +7,16 @@ import { threeColors as colors } from '../../assets/colors.js';
 class StackedBarChart extends Component {
   barOptions_stacked = {
     tooltips: {
-      enabled: true
+      enabled: true,
+      mode: 'point',
+      backgroundColor: 'white'
     },
     hover: {
+      onHover: function(e) {
+        var point = this.getElementAtEvent(e);
+        if (point.length) e.target.style.cursor = 'pointer';
+        else e.target.style.cursor = 'default';
+      },
       animationDuration: 0
     },
     scales: {
@@ -101,8 +108,9 @@ class StackedBarChart extends Component {
         backgroundColor: colors[0],
         // borderColor: '#4169E1',
         // borderWidth: 2,
-        hoverBackgroundColor: '#5169E1',
-        hoverBorderColor: '#4169E1',
+        // hoverBackgroundColor: '#5169E1',
+        hoverBorderWidth: 1,
+        hoverBorderColor: '#000000',
         data: [65, 59, 80, 81, 56, 55, 9]
       }
     ]
@@ -114,10 +122,10 @@ class StackedBarChart extends Component {
       let combination = result[i].output.combinations.map(c => c.amount);
 
       const temp = {
-        label: `My ${i + 1}th dataset`,
+        label: result[i].input.stateName,
         backgroundColor: colors[i],
-        hoverBackgroundColor: '#5169E1',
-        hoverBorderColor: '#4169E1',
+        hoverBorderWidth: 1,
+        hoverBorderColor: '#000000',
         data: [...combination]
       };
       this.chartData.datasets.push(temp);
@@ -169,11 +177,6 @@ class StackedBarChart extends Component {
   render() {
     return (
       <div className="alignForm1" style={this.props.style}>
-        {this.props.selectedStates.map(s => (
-          <p key={s.label}>
-            {s.label} - {s.value}
-          </p>
-        ))}
         <header className="heading">Data in the form of StackedBarChart:</header>
         <HorizontalBar
           data={this.state.data}
