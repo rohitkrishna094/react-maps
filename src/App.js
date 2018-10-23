@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import Dashboard from './components/Dashboard/Dashboard';
 import StackedBarChart from './components/StackedBarChart/StackedBarChart';
 import MyMap from './components/MyMap/MyMap';
-import { getData, getDataDefault, getSomeRandomData } from './api/FetchService';
+import { getData, getDataDefault, getSomeRandomData, postData } from './api/FetchService';
 
 class App extends Component {
   constructor(props) {
@@ -20,10 +20,11 @@ class App extends Component {
       }
     };
 
-    getSomeRandomData(
+    postData(
+      null,
       err => {},
       data => {
-        console.log(data);
+        // console.log(data);
       }
     );
   }
@@ -57,19 +58,22 @@ class App extends Component {
     } else if (name === 'states') {
       this.setState({
         selectedStates: [...value]
-
       });
     }
-    
   };
 
   render() {
     return (
       <div>
+        {/* {this.state.selectedStates.map(s => (
+          <p key={s.label}>
+            {s.label} - {s.value}
+          </p>
+        ))} */}
         <Header />
         <Dashboard callback={this.handleCallback} inputValues={this.state.inputValues} />
         <div>
-          <StackedBarChart style={this.chartStyle} />
+          <StackedBarChart style={this.chartStyle} selectedStates={this.state.selectedStates} />
           <MyMap style={this.mapStyle} selectedStates={this.state.selectedStates} />
         </div>
       </div>
