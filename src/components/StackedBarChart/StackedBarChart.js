@@ -45,7 +45,7 @@ class StackedBarChart extends Component {
       ]
     },
     legend: {
-      display: true
+      display: false
       //position: 'right'
     },
     animation: {
@@ -98,7 +98,6 @@ class StackedBarChart extends Component {
     ],
     datasets: [
       {
-        label: 'My First dataset',
         backgroundColor: colors[0],
         // borderColor: '#4169E1',
         // borderWidth: 2,
@@ -123,10 +122,10 @@ class StackedBarChart extends Component {
       };
       this.chartData.datasets.push(temp);
     } // end for
-    // this.setState({
-    //   data: { ...this.state.data, datasets: this.chartData.datasets }
-    // });
-    console.log(this.chartData.datasets);
+    this.setState({
+      data: { ...this.state.data, datasets: this.chartData.datasets }
+    });
+    // console.log(this.chartData.datasets);
   };
 
   constructor(props) {
@@ -150,14 +149,14 @@ class StackedBarChart extends Component {
     console.log(' onElementsClickCustom event - ' + ev);
   };
 
-  componentDidUpdate() {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let dataToSend = [];
 
-    this.props.selectedStates.forEach(s => {
+    nextProps.selectedStates.forEach(s => {
       let o = { ...this.props.inputValues, stateName: s.label, stateId: s.value };
       dataToSend.push(o);
     });
-
+    console.log(dataToSend);
     postData(
       dataToSend,
       err => {},

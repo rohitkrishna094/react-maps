@@ -21,14 +21,6 @@ class App extends Component {
       selectedStates: [{ label: 'Michigan', value: 26 }],
       inputValues: { ...defaultValues }
     };
-
-    postData(
-      null,
-      err => {},
-      data => {
-        // console.log(data);
-      }
-    );
   }
 
   chartStyle = {
