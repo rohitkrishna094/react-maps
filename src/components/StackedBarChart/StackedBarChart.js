@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import Chart from 'chart.js';
 import { postData } from '../../api/FetchService';
+import { threeColors as colors } from '../../assets/colors.js';
 
 const barOptions_stacked = {
   tooltips: {
@@ -78,34 +79,31 @@ const barOptions_stacked = {
 };
 
 let data = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  labels: [
+    'All Other Combinations',
+    'Group, Group',
+    'Group, Individual',
+    'Group, Medicaid',
+    'Group, Medicare',
+    'Individual, Group',
+    'Individual, Medicaid',
+    'Individual, Medicare',
+    'Medicaid, Group',
+    'Medicaid, Individual',
+    'Medicaid, Medicare',
+    'Medicare, Group',
+    'Medicare, Individual',
+    'Medicare, Medicaid'
+  ],
   datasets: [
     {
-      label: 'My First dataset',
-      backgroundColor: '#4169E1',
-      borderColor: '#4169E1',
-      borderWidth: 2,
-      hoverBackgroundColor: '#4169E1',
+      // label: 'My First dataset',
+      backgroundColor: colors[0],
+      // borderColor: '#4169E1',
+      // borderWidth: 2,
+      hoverBackgroundColor: '#5169E1',
       hoverBorderColor: '#4169E1',
       data: [65, 59, 80, 81, 56, 55, 40]
-    },
-    {
-      label: 'My Second dataset',
-      backgroundColor: '#0000CD',
-      borderColor: '#0000CD',
-      borderWidth: 2,
-      hoverBackgroundColor: '#0000CD',
-      hoverBorderColor: '#0000CD',
-      data: [75, 69, 90, 71, 46, 35, 20]
-    },
-    {
-      label: 'My Second dataset',
-      backgroundColor: '#00008B',
-      borderColor: '#00008B',
-      borderWidth: 2,
-      hoverBackgroundColor: '#00008B',
-      hoverBorderColor: '#00008B',
-      data: [45, 39, 40, 51, 76, 25, 10]
     }
   ]
 };
@@ -144,10 +142,12 @@ class StackedBarChart extends Component {
       dataToSend,
       err => {},
       result => {
-        console.log(result);
+        this.setChart(result);
       }
     );
   }
+
+  setChart = result => {};
 
   render() {
     return (
