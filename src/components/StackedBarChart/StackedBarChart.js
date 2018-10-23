@@ -140,13 +140,11 @@ class StackedBarChart extends Component {
       dataToSend.push(o);
     });
 
-    // console.log(dataToSend);
-
     postData(
-      data,
+      dataToSend,
       err => {},
       result => {
-        // console.log(result);
+        console.log(result);
       }
     );
   }
