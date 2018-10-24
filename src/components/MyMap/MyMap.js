@@ -153,8 +153,6 @@ class MyMap extends Component {
           </p>
         ))} */}
 
-        <header className="heading">Data in the form of Maps:</header>
-
         <Map style={this.props.style} center={position} zoom={this.state.zoom}>
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"

@@ -184,7 +184,6 @@ class StackedBarChart extends Component {
   render() {
     return (
       <div className="alignForm1" style={this.props.style}>
-        <header className="heading">Data in the form of StackedBarChart:</header>
         <HorizontalBar
           data={this.state.data}
           options={this.barOptions_stacked}

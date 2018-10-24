@@ -1,65 +1,26 @@
-.design{
-
+.design {
   max-width: 400px;
   max-height: 100px
-
 }
 
 .addUI {
-
   padding: 1px;
-  border-color: blue;
-  border-width: 5px;
-
-}
-
-.textColor {
-
-  color: blue;
+  /* border-color: blue; */
+  /* border-width: 5px; */
 }
 
 .alignForm {
 
   display: flex;
   padding: 10px;
-  border:1px solid blue;
+  border: 1px solid blue;
   border-width: 5px;
-
-
-}
-
-.alignForm1 {
-
-  border:1px solid blue;
-  border-width: 5px;
-
-}
-
-.heading {
-
-  color: white;
-  font-size: 20px;
-
-  border: 2px solid blue;
-  padding: 3px;
-  background-color: blue;
-  text-decoration: underline;
-}
-
-
-
-.container:after { /*clear float*/
-  content: "";
-  display: table;
-  clear: both;
-  border: 2px solid blue;
-  box-sizing: border-box;
 }
 
 .column1 {
   float: left;
   width: 33.3333%;
-/*  border: 2px solid blue;
-  box-sizing: border-box;*/
+  /* border: 2px solid blue;
+  box-sizing: border-box; */
 
 }
