@@ -97,12 +97,34 @@ class MyMap extends Component {
   getColorShade = (id, density) => {
     const { selectedStates } = this.state;
     const features = statesData.features;
-    console.log(features);
-
+    let sortedData = [];
     if (this._isPresent(id, selectedStates)) {
       // we have id and density. sort based on density
 
-      return colors[2];
+      for (let i = 0; i < features.length; i++) {
+        for (let j = 0; j < selectedStates.length; j++) {
+          if (parseInt(features[i].id) === selectedStates[j].value) {
+            sortedData.push({
+              id: selectedStates[j].value,
+              name: selectedStates[j].label,
+              density: features[i].properties.density
+            });
+          }
+        }
+      } // end for
+
+      sortedData.sort((a, b) => a.density - b.density);
+
+      let index = 0;
+      for (let i = 0; i < sortedData.length; i++) {
+        if (sortedData[i].id === id) {
+          index = i;
+          break;
+        }
+      }
+      console.log(sortedData);
+
+      return colors[index];
     }
   };
 
