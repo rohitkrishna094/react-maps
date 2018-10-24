@@ -88,34 +88,36 @@ class MyMap extends Component {
   _isPresent = (id, selectedStates) => {
     for (let i = 0; i < selectedStates.length; i++) {
       if (id === selectedStates[i].value) {
-        // console.log(selectedStates[i].value);
         return true;
       }
     }
     return false;
   };
 
-  getColorShade = selectedStates => {
-    //const { selectedStates } = this.state;
-    if (selectedStates === 'California') {
-      // get color shade here. think about the logic once again.
-      this.color = { color: 'blue' };
-      // console.log(this.color);
+  getColorShade = (id, density) => {
+    const { selectedStates } = this.state;
+    const features = statesData.features;
+    console.log(features);
+
+    if (this._isPresent(id, selectedStates)) {
+      // we have id and density. sort based on density
+
+      return colors[2];
     }
   };
 
   geoJsonStyle = feature => {
     return {
-      stroke: true,
+      stroke: false,
       // fillColor: this.getColor(feature.properties.density),
-      //  fillColor: this.getColorShade(feature.properties.density, feature.id),
+      fillColor: this.getColorShade(parseInt(feature.id), feature.properties.density),
 
       weight: 1,
 
-      color: this.getColorShade,
+      // color: this.getColorShade(feature.properties.density),
 
       // fillColor: '#C3E0F0',
-      fillOpacity: this.getFillOpacity(feature.id)
+      fillOpacity: this.getFillOpacity(parseInt(feature.id))
     };
   };
 

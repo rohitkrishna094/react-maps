@@ -9,7 +9,14 @@ class StackedBarChart extends Component {
     tooltips: {
       enabled: true,
       mode: 'point',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      titleFontColor: 'black',
+      bodyFontColor: 'black',
+      footerFontColor: 'black',
+      borderColor: 'black',
+      borderWidth: 0.5,
+      cornerRadius: 1,
+      caretSize: 0
     },
     hover: {
       onHover: function(e) {
@@ -17,7 +24,7 @@ class StackedBarChart extends Component {
         if (point.length) e.target.style.cursor = 'pointer';
         else e.target.style.cursor = 'default';
       },
-      animationDuration: 0
+      animationDuration: 100
     },
     scales: {
       xAxes: [
@@ -164,7 +171,7 @@ class StackedBarChart extends Component {
       let o = { ...this.props.inputValues, stateName: s.label, stateId: s.value };
       dataToSend.push(o);
     });
-    console.log(dataToSend);
+    // console.log(dataToSend);
     postData(
       dataToSend,
       err => {},
