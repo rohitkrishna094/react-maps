@@ -19,7 +19,8 @@ class App extends Component {
     this.state = {
       input: { ...defaultValues },
       selectedStates: [{ label: 'Michigan', value: 26 }],
-      inputValues: { ...defaultValues }
+      inputValues: { ...defaultValues },
+      sortedStates: []
     };
   }
 
@@ -56,6 +57,10 @@ class App extends Component {
     }
   };
 
+  sortedStatesCallback = sortedStates => {
+    this.setState({ sortedStates: sortedStates });
+  };
+
   render() {
     return (
       <div>
@@ -73,8 +78,13 @@ class App extends Component {
             style={this.chartStyle}
             selectedStates={this.state.selectedStates}
             inputValues={this.state.input}
+            sortedStates={this.state.sortedStates}
           />
-          <MyMap style={this.mapStyle} selectedStates={this.state.selectedStates} />
+          <MyMap
+            style={this.mapStyle}
+            selectedStates={this.state.selectedStates}
+            callback={this.sortedStatesCallback}
+          />
         </div>
       </div>
     );

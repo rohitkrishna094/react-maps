@@ -127,10 +127,11 @@ class StackedBarChart extends Component {
     this.chartData.datasets = [];
     for (let i = 0; i < result.length; i++) {
       let combination = result[i].output.combinations.map(c => c.amount);
+      const index = this.getRankingIndex(result[i].input.stateId);
 
       const temp = {
         label: result[i].input.stateName,
-        backgroundColor: colors[i],
+        backgroundColor: colors[index],
         hoverBorderWidth: 1,
         hoverBorderColor: '#000000',
         data: [...combination]
@@ -143,9 +144,20 @@ class StackedBarChart extends Component {
     // console.log(this.chartData.datasets);
   };
 
+  getRankingIndex(id) {
+    console.log(this.state.sortedStates);
+    const { sortedStates } = this.state;
+    for (let i = 0; i < sortedStates.length; i++) {
+      if (sortedStates[i].id === id) {
+        return i;
+      }
+    }
+    return 0;
+  }
+
   constructor(props) {
     super(props);
-    this.state = { data: { datasets: this.chartData.datasets, labels: this.chartData.labels } };
+    this.state = { data: { datasets: this.chartData.datasets, labels: this.chartData.labels }, sortedStates: [] };
   }
 
   getDatasetAtEventCustom = event => {
@@ -179,11 +191,17 @@ class StackedBarChart extends Component {
         this.setChart(result);
       }
     );
+
+    this.setState({ sortedStates: nextProps.sortedStates });
   }
 
   render() {
     return (
       <div className="alignForm1" style={this.props.style}>
+        {/* {this.state.sortedStates.map((s, i) => (
+          <p key={i}>{JSON.stringify(s)}</p>
+        ))} */}
+
         <HorizontalBar
           data={this.state.data}
           options={this.barOptions_stacked}

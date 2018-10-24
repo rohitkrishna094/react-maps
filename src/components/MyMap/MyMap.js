@@ -25,6 +25,28 @@ class MyMap extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedStates !== this.state.selectedStates) {
       this.setState({ selectedStates: nextProps.selectedStates });
+    } // end if
+  }
+
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
+    if (nextProps.selectedStates !== this.state.selectedStates) {
+      const { selectedStates } = nextState;
+      const features = statesData.features;
+      let sortedData = [];
+      for (let i = 0; i < features.length; i++) {
+        for (let j = 0; j < selectedStates.length; j++) {
+          if (parseInt(features[i].id) === selectedStates[j].value) {
+            sortedData.push({
+              id: selectedStates[j].value,
+              name: selectedStates[j].label,
+              density: features[i].properties.density
+            });
+          }
+        }
+      } // end for
+
+      sortedData.sort((a, b) => a.density - b.density);
+      nextProps.callback(sortedData);
     }
   }
 
@@ -122,7 +144,7 @@ class MyMap extends Component {
           break;
         }
       }
-      console.log(sortedData);
+      // console.log(sortedData);
 
       return colors[index];
     }
