@@ -6,6 +6,13 @@ import { threeColors as colors } from '../../assets/colors.js';
 
 class StackedBarChart extends Component {
   barOptions_stacked = {
+    plugins: {
+      datalabels: {
+        display: false,
+        align: 'center',
+        anchor: 'center'
+      }
+    },
     tooltips: {
       enabled: true,
       mode: 'point',
@@ -35,7 +42,7 @@ class StackedBarChart extends Component {
             fontSize: 12
           },
           scaleLabel: {
-            display: false
+            display: true
           },
           gridLines: {},
           stacked: true
@@ -145,7 +152,6 @@ class StackedBarChart extends Component {
   };
 
   getRankingIndex(id) {
-    console.log(this.state.sortedStates);
     const { sortedStates } = this.state;
     for (let i = 0; i < sortedStates.length; i++) {
       if (sortedStates[i].id === id) {

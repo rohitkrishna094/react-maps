@@ -109,15 +109,10 @@ class Dashboard extends Component {
           </label>
         </div>
 
-        <div className="column1">
+        <div className="column1 ">
           <label className="textColor">
-            Combination
-            <select className="addUI">
-              <option value="all">All</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
+            <label className="textColor">Combinations</label>
+            <Select className="design" isSearchable={true} isClearable={true} />
           </label>
         </div>
       </div>

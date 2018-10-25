@@ -1,6 +1,6 @@
 .design {
   max-width: 400px;
-  max-height: 100px
+  max-height: 100px;
 }
 
 .addUI {
@@ -10,7 +10,6 @@
 }
 
 .alignForm {
-
   display: flex;
   padding: 10px;
   border: 1px solid blue;
@@ -22,5 +21,57 @@
   width: 33.3333%;
   /* border: 2px solid blue;
   box-sizing: border-box; */
+}
 
+.headersize ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* .headersize ul li {
+  display: inline;
+} */
+
+.headersize {
+  margin: auto;
+  width: 55%;
+  background-color: red;
+}
+
+#header_cob span {
+  color: #b2b2b2;
+}
+
+.headersize li:last-child span {
+  color: #cea23e;
+}
+
+.headersize li:not(:first-child) {
+  background-color: pink;
+  margin-top: 20px;
+}
+
+.imgsize {
+  display: inline-block;
+  vertical-align: top;
+  /* width: 50px;
+  height: 50px; */
+  /* margin-right: 20px; */
+  /* margin-top: 15px; */
+}
+
+.headersize li {
+  display: inline-block;
+  vertical-align: top;
+  /* margin-right: 20px; */
+  /* height: 80px;  */
+  /* line-height: 80px; */
+}
+
+#header_cob span {
+  /* background-color: blue; */
+  border-right: 1px solid #cea23e;
+  float: left;
+  clear: right;
 }
